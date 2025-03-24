@@ -2,21 +2,25 @@ import { Testimonial } from "@/components/ui/animated-testimonials";
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-    name: "Account Manager",
-    designation: "Operations Director at CloudScale",
+    quote: "",
+    name: "Call Center Agent?",
+    designation: "Who you gonna call?",
     src: "/testimonials/person1.jpg",
   },
   {
-    quote: "I was skeptical at first, but dayinrole helped me understand what my day would actually look like in my dream role. Worth every penny!",
-    name: "Backend Developer",
-    designation: "Frontend Developer at TechGrowth",
+    quote: "",
+    name: "Backend Developer?",
+    designation: "Which stack will I be using?",
     src: "/testimonials/person2.jpg",
   },
   {
-    quote: "The day-in-the-life summary I received was incredibly accurate and detailed. It prepared me for the job interview and the actual role.",
-    name: "Product Manager",
+    quote: "",
+    name: "Product Manager?",
     designation: "Product Manager at InnovateTech",
     src: "/testimonials/person3.jpg",
   },
 ]; 
+
+//Working as a Sale Consultant combines a fast-paced phone sales environment with high earning potential and comprehensive coaching.
+//I was skeptical at first, but dayinrole helped me understand what my day would actually look like in my dream role. Worth every penny!
+//The day-in-the-life summary I received was incredibly accurate and detailed. It prepared me for the job interview and the actual role.

@@ -39,7 +39,8 @@ export function Navbar() {
   const isAuthenticated = status === "authenticated";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    // bg-background/95    supports-[backdrop-filter]:bg-background/60
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur">
       <div className="container flex h-14 max-w-screen-xl items-center justify-between mx-auto px-4">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">

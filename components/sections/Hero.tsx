@@ -31,7 +31,8 @@ export function Hero({ isAuthenticated }: HeroProps) {
           >
             <motion.div variants={itemVariants}>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Understand<br />Your Dream Job
+                {/* Be familiar with<br />Your <span className="text-gray-400">new</span> Job */}
+                Know &lsquo;Day in life&rsquo;<br />In Your <span className="text-gray-400">new</span> Job
               </h1>
               <p className="max-w-[500px] text-gray-500 md:text-xl dark:text-gray-400 mt-6">
                 Paste any job offer &ndash; get a realistic &lsquo;day in the life&rsquo; summary instantly.

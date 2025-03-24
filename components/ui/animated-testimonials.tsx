@@ -35,7 +35,7 @@ export function AnimatedTestimonials({
 
   useEffect(() => {
     if (autoplay) {
-      const interval = setInterval(handleNext, 5000);
+      const interval = setInterval(handleNext, 7000);
       return () => clearInterval(interval);
     }
   }, [autoplay]);
@@ -93,7 +93,7 @@ export function AnimatedTestimonials({
           </AnimatePresence>
         </div>
       </div>
-      <div className="flex flex-col justify-between py-4">
+      <div className="flex flex-col justify-between py-4 items-end">
         <motion.div
           key={active}
           initial={{
@@ -114,13 +114,13 @@ export function AnimatedTestimonials({
           }}
           className="text-left"
         >
-          <h3 className="text-2xl font-bold text-black dark:text-white">
+          <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-400">
             {testimonials[active].name}
           </h3>
           <p className="text-sm text-gray-500 dark:text-neutral-500">
             {testimonials[active].designation}
           </p>
-          <motion.p className="mt-4 text-base text-gray-500 dark:text-neutral-300">
+          <motion.p className="mt-4 text-base text-purple-500 dark:text-purple-300">
             {testimonials[active].quote.split(" ").map((word, index) => (
               <motion.span
                 key={index}
@@ -146,7 +146,7 @@ export function AnimatedTestimonials({
             ))}
           </motion.p>
         </motion.div>
-        <div className="flex gap-4 pt-6">
+        {/* <div className="flex gap-4 pt-6">
           <button
             onClick={handlePrev}
             aria-label="Previous testimonial"
@@ -163,7 +163,7 @@ export function AnimatedTestimonials({
           >
             <IconArrowRight className="h-4 w-4 text-black transition-transform duration-300 group-hover:translate-x-0.5 dark:text-neutral-400" />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
