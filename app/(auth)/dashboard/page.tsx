@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { format } from "date-fns";
 import { getSession } from "@/lib/session";
-import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/components/shared/icons";
@@ -15,17 +14,12 @@ export default async function DashboardPage() {
     redirect("/login");
   }
   
-  const roleSummaries = await db.roleSummary.findMany({
-    where: {
-      userId: session.user.id,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  // Temporary empty array until Firebase implementation
+  const roleSummaries = [];
 
-  const plan = getPlanData(session.user.subscriptionStatus);
-  const usageCount = session.user.usageCount || 0;
+  // Default values until Firebase implementation
+  const plan = getPlanData("free");
+  const usageCount = 0;
   const usageLimit = plan.limit;
   const canGenerate = usageCount < usageLimit || usageLimit === Infinity;
 
@@ -79,7 +73,7 @@ export default async function DashboardPage() {
               </Link>
             </Button>
           </div>
-        ) : (
+        ) :
           roleSummaries.map((summary) => (
             <Card key={summary.id}>
               <CardHeader>

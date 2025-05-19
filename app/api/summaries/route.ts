@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getSession } from "@/lib/session";
-import { db } from "@/lib/db";
 import { getPlanData } from "@/lib/stripe";
 
 const summaryRequestSchema = z.object({
@@ -58,50 +57,25 @@ export async function POST(request: NextRequest) {
     const json = await request.json();
     const body = summaryRequestSchema.parse(json);
 
-    // Check user's subscription status and usage
-    const user = await db.user.findUnique({
-      where: { id: session.user.id },
-    });
-
-    if (!user) {
-      return NextResponse.json(
-        { error: "User not found" },
-        { status: 404 }
-      );
-    }
-
-    const plan = getPlanData(user.subscriptionStatus);
+    // Default to free plan until Firebase implementation
+    const plan = getPlanData("free");
     
-    // Check if user has exceeded their usage limit
-    if (user.usageCount >= plan.limit && plan.limit !== Infinity) {
-      return NextResponse.json(
-        { error: "Usage limit exceeded. Please upgrade your plan." },
-        { status: 403 }
-      );
-    }
-
     // Generate the summary (in a real app, this would call an AI service)
     const summary = await generateDayInTheLifeSummary(
       body.jobTitle,
       body.jobDescription
     );
 
-    // Create a new role summary in the database
-    const roleSummary = await db.roleSummary.create({
-      data: {
-        userId: session.user.id,
-        jobTitle: body.jobTitle,
-        jobDescription: body.jobDescription,
-        summary,
-        isPublic: false,
-      },
-    });
-
-    // Update user's usage count
-    await db.user.update({
-      where: { id: session.user.id },
-      data: { usageCount: { increment: 1 } },
-    });
+    // Create mock summary response until Firebase implementation
+    const roleSummary = {
+      id: Math.random().toString(36).substring(2, 15),
+      userId: session.user.id,
+      jobTitle: body.jobTitle,
+      jobDescription: body.jobDescription,
+      summary,
+      isPublic: false,
+      createdAt: new Date().toISOString()
+    };
 
     return NextResponse.json(roleSummary);
   } catch (error) {

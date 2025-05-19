@@ -2,7 +2,6 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { format } from "date-fns";
 import { getSession } from "@/lib/session";
-import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/components/shared/icons";
@@ -18,12 +17,14 @@ export default async function SummaryDetailPage({
     redirect("/login");
   }
 
-  const summary = await db.roleSummary.findUnique({
-    where: {
-      id: params.id,
-      userId: session.user.id,
-    },
-  });
+  // Mock data until Firebase implementation
+  const summary = {
+    id: params.id,
+    jobTitle: "Example Job Title",
+    createdAt: new Date().toISOString(),
+    summary: "# A Day in the Life\n\n## Morning\n- Task 1\n- Task 2\n\n## Afternoon\n- Task 3\n- Task 4",
+    jobDescription: "This is a placeholder job description until Firebase is implemented."
+  };
 
   if (!summary) {
     notFound();
