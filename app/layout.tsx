@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import AuthProvider from "@/components/providers/auth-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Navbar } from "@/components/shared/navbar";
+import { Hero } from "@/components/sections/Hero";
+import { Features } from "@/components/sections/Features";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +33,8 @@ export default function RootLayout({
           >
             <div className="flex min-h-screen flex-col">
               <Navbar />
+              <Hero />
+              <Features />
               <main className="flex-1">{children}</main>
             </div>
             <Toaster position="bottom-right" />

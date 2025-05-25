@@ -1,20 +1,16 @@
-import { redirect } from "next/navigation";
-import { getSession } from "@/lib/session";
+import { ReactNode } from "react";
 
-export default async function AuthLayout({
+const AuthLayout = async ({
   children,
 }: {
-  children: React.ReactNode;
-}) {
-  const session = await getSession();
-
-  if (!session?.user) {
-    redirect("/login");
-  }
+  children: ReactNode;
+}) => {
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex-1">{children}</main>
+    <div className="auth-layout">
+      { children }
     </div>
   );
 } 
+
+export default AuthLayout;

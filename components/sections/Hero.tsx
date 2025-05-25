@@ -7,11 +7,13 @@ import { containerVariants, itemVariants } from "@/lib/animations";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { testimonials } from "@/lib/testimonials-data";
 
-interface HeroProps {
-  isAuthenticated: boolean;
-}
+// interface HeroProps {
+//   isAuthenticated: boolean;
+// }
 
-export function Hero({ isAuthenticated }: HeroProps) {
+// ({ isAuthenticated }: HeroProps)
+
+export function Hero(){
   return (
     <section className="relative w-full min-h-[calc(100vh-3.5rem)] flex items-center justify-center bg-background dark:bg-neutral-950">
       {/* Background gradient */}
@@ -40,7 +42,8 @@ export function Hero({ isAuthenticated }: HeroProps) {
             </motion.div>
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 mt-4">
               <Button asChild size="lg" className="min-w-[160px]">
-                <Link href={isAuthenticated ? "/dashboard/new" : "/login"}>
+              {/* isAuthenticated ? "/dashboard/new" :  */}
+                <Link href={"/login"}>
                   Get Started
                 </Link>
               </Button>
